@@ -4,19 +4,8 @@
       {{ name }}
     </NuxtLink>
 
-    <button
-      v-if="isInFavourites"
-      class="ui-characters-list-item__remove"
-      @click="removeFromFavourites"
-    >
-      <i class="fa fa-heart"></i>
-    </button>
-    <button
-      v-if="!isInFavourites"
-      class="ui-characters-list-item__add"
-      @click="addToFavourites"
-    >
-      <i class="fa fa-heart-o"></i>
+    <button class="ui-characters-list-item__add" @click="removeFromFavourites">
+      <i class="fa fa-trash-o"></i>
     </button>
   </div>
 </template>
@@ -36,9 +25,6 @@ export default {
       required: true,
       type: String,
     },
-    isInFavourites: {
-      type: Boolean,
-    },
   },
 
   computed: {
@@ -48,15 +34,8 @@ export default {
   },
 
   methods: {
-    addToFavourites() {
-      this.$emit('add', {
-        id: userUrlToID(this.url),
-        name: this.name,
-        url: this.url,
-      })
-    },
     removeFromFavourites() {
-      this.$emit('remove', {
+      this.$store.commit('favourites/remove', {
         id: userUrlToID(this.url),
         name: this.name,
         url: this.url,
@@ -80,7 +59,7 @@ export default {
     padding: 1rem 1rem;
   }
 
-  &__add {
+  &__remove {
     display: block;
   }
 
