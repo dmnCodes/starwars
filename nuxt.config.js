@@ -25,7 +25,13 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/main',
+      '~/components/ui'
+    ]
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -42,9 +48,20 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    // proxy: true,
+    progress: true,
+    credentials: false,
+    baseURL: 'https://swapi.dev/api'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  // https://nuxtjs.org/docs/features/loading/
+  loading: {
+    color: '#525252',
+    height: '3px'
   }
 }
