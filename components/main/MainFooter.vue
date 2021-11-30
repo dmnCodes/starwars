@@ -9,6 +9,6 @@ footer {
   justify-content: center;
   height: 2rem;
   font-size: 0.85rem;
-  color: rgba(0,0,0, 0.65);
+  color: rgba(0, 0, 0, 0.4);
 }
 </style>
